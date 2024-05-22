@@ -73,6 +73,7 @@ def mypy(session: nox.Session) -> None:
         "django-stubs[compatible-mypy] < 6",
         "psycopg2-binary < 3",
         "python-dotenv < 2",
+        "types-openpyxl < 4",
     )
 
     session.run("mypy", *MYPY_OPTIONS, ".")

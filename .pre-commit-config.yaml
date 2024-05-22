@@ -34,5 +34,7 @@ repos:
       - id: mypy
         additional_dependencies:
           - django-stubs[compatible-mypy] < 6
+          - openpyxl < 4
           - psycopg2-binary < 3
           - python-dotenv < 2
+          - types-openpyxl < 4

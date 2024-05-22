@@ -9,6 +9,7 @@ build-backend = "setuptools.build_meta"
 name = "django-xlsx-serializer"
 dependencies = [
   "django >= 3.2, < 5.1",
+  "openpyxl < 4",
   "typing-extensions < 5",
 ]
 requires-python = ">= 3.9"
@@ -61,6 +62,7 @@ dev = [
   "psycopg2-binary < 3",
   "python-dotenv < 2",
   "ruff < 1",
+  "types-openpyxl < 4",
 ]
 
 # Setuptools
