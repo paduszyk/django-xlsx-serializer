@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+# Project metadata
+# https://packaging.python.org/en/latest/specifications/pyproject-toml/
+
+[project]
+name = "django-xlsx-serializer"
+dependencies = []
+requires-python = ">= 3.9"
+authors = [
+  { name = "Kamil Paduszyński", email = "92403542+paduszyk@users.noreply.github.com" },
+]
+description = "Load/dump Django models from/to Excel 2007+ workbooks"
+readme = "docs/README.md"
+keywords = [
+  "django",
+  "django-application",
+  "excel",
+  "excel-export",
+  "excel-import",
+]
+classifiers = [
+  "Environment :: Web Environment",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dynamic = ["version"]
+
+[project.urls]
+"Repository" = "https://github.com/paduszyk/django-xlsx-serializer"
+
+[project.optional-dependencies]
+dev = []
+
+# Setuptools
+# https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
+
+[tool.setuptools.dynamic]
+version = { attr = "xlsx_serializer.__version__" }
