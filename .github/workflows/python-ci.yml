@@ -1,0 +1,112 @@
+name: "Python: CI"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  get-python-versions:
+    name: Get Python versions
+    runs-on: ubuntu-latest
+    outputs:
+      python-versions: ${{ steps.python-versions.outputs.python-versions }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - id: python-versions
+        run: |
+          echo "python-versions<<EOF" >> $GITHUB_OUTPUT
+          echo "$(python ./scripts/get_python_versions.py)" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+  format-nox-sessions:
+    name: Format Nox sessions
+    runs-on: ubuntu-latest
+    outputs:
+      install-sessions: ${{ steps.nox-sessions.outputs.install-sessions }}
+      lint-sessions: ${{ steps.nox-sessions.outputs.lint-sessions }}
+      test-sessions: ${{ steps.nox-sessions.outputs.test-sessions }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          cache: pip
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install nox
+      - id: nox-sessions
+        run: |
+          echo "install-sessions=$(python ./scripts/format_nox_sessions.py install)" >> $GITHUB_OUTPUT
+          echo "lint-sessions=$(python ./scripts/format_nox_sessions.py lint)" >> $GITHUB_OUTPUT
+          echo "test-sessions=$(python ./scripts/format_nox_sessions.py test)" >> $GITHUB_OUTPUT
+  install:
+    name: ${{ matrix.session.job }}
+    needs:
+      - get-python-versions
+      - format-nox-sessions
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        session: ${{ fromJson(needs.format-nox-sessions.outputs.install-sessions) }}
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ needs.get-python-versions.outputs.python-versions }}
+          cache: pip
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install nox
+      - run: nox --session "${{ matrix.session.name }}"
+  lint:
+    name: ${{ matrix.session.job }}
+    needs:
+      - format-nox-sessions
+      - install
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        session: ${{ fromJson(needs.format-nox-sessions.outputs.lint-sessions) }}
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          cache: pip
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install nox
+      - run: nox --session "${{ matrix.session.name }}"
+  test:
+    name: ${{ matrix.session.job }}
+    needs:
+      - get-python-versions
+      - format-nox-sessions
+      - install
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        session: ${{ fromJson(needs.format-nox-sessions.outputs.test-sessions) }}
+      fail-fast: false
+    services:
+      postgresql:
+        image: ${{ contains(matrix.session.name, 'postgresql') && 'postgres:latest' || '' }}
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ needs.get-python-versions.outputs.python-versions }}
+          cache: pip
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install nox
+      - run: nox --session "${{ matrix.session.name }}"

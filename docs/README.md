@@ -1,6 +1,7 @@
 # django-xlsx-serializer
 
 [![Pre-commit](https://img.shields.io/github/actions/workflow/status/paduszyk/django-xlsx-serializer/pre-commit-run.yml?style=flat-square&label=pre-commit&logo=pre-commit)][pre-commit]
+[![Python: CI](https://img.shields.io/github/actions/workflow/status/paduszyk/django-xlsx-serializer/python-ci.yml?style=flat-square&logo=github&label=CI)][python-ci]
 
 [![Nox](https://img.shields.io/badge/%F0%9F%A6%8A-Nox-D85E00.svg?style=flat-square)][nox]
 [![Ruff](https://img.shields.io/endpoint?style=flat-square&url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)][ruff]
@@ -23,4 +24,5 @@ Released under the [MIT license][license].
 [paduszyk]: https://github.com/paduszyk
 [pre-commit]: https://github.com/paduszyk/django-xlsx-serializer/actions/workflows/pre-commit-run.yml
 [prettier]: https://prettier.io
+[python-ci]: https://github.com/paduszyk/django-xlsx-serializer/actions/workflows/python-ci.yml
 [ruff]: https://docs.astral.sh/ruff/

@@ -82,6 +82,7 @@ select = ["ALL"]
 ignore = ["ANN", "D"]
 
 [tool.ruff.lint.per-file-ignores]
+"scripts/**/*.py" = ["INP"]
 "tests/**/*.py" = ["ARG", "DJ", "E501", "FBT", "PLR2004", "S101"]
 
 [tool.ruff.lint.isort]
