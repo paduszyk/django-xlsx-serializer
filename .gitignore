@@ -24,3 +24,9 @@ dist/
 # Coverage.py
 .coverage
 coverage.xml
+
+# Django
+*.sqlite3
+
+# Environment variables
+.env
