@@ -1,2 +1,13 @@
 # Node
 node_modules/
+
+# Virtual environments
+.venv/
+
+# Byte-compiled Python
+__pycache__/
+
+# Python distribution & packaging
+*.egg-info/
+build/
+dist/
