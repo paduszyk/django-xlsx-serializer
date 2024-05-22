@@ -110,3 +110,18 @@ jobs:
       - run: python -m pip install --upgrade pip
       - run: python -m pip install nox
       - run: nox --session "${{ matrix.session.name }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ matrix.session.name }}
+          path: coverage.xml
+  codecov-upload:
+    name: Uplaod coverage to Codecov
+    needs:
+      - test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+      - uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

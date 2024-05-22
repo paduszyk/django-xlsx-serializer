@@ -2,6 +2,7 @@
 
 [![Pre-commit](https://img.shields.io/github/actions/workflow/status/paduszyk/django-xlsx-serializer/pre-commit-run.yml?style=flat-square&label=pre-commit&logo=pre-commit)][pre-commit]
 [![Python: CI](https://img.shields.io/github/actions/workflow/status/paduszyk/django-xlsx-serializer/python-ci.yml?style=flat-square&logo=github&label=CI)][python-ci]
+[![Codecov](https://img.shields.io/codecov/c/github/paduszyk/django-xlsx-serializer?style=flat-square&logo=codecov)][codecov]
 
 [![Nox](https://img.shields.io/badge/%F0%9F%A6%8A-Nox-D85E00.svg?style=flat-square)][nox]
 [![Ruff](https://img.shields.io/endpoint?style=flat-square&url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)][ruff]
@@ -17,6 +18,7 @@ Created and maintained by Kamil Paduszyński ([@paduszyk][paduszyk]).
 
 Released under the [MIT license][license].
 
+[codecov]: https://app.codecov.io/gh/paduszyk/django-xlsx-serializer
 [conventional-commits]: https://www.conventionalcommits.org/en/v1.0.0/
 [license]: https://github.com/paduszyk/django-xlsx-serializer/blob/main/LICENSE
 [mypy]: https://mypy.readthedocs.io
