@@ -7,7 +7,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "django-xlsx-serializer"
-dependencies = []
+dependencies = [
+  "typing-extensions < 5",
+]
 requires-python = ">= 3.9"
 authors = [
   { name = "Kamil Paduszyński", email = "92403542+paduszyk@users.noreply.github.com" },
@@ -42,6 +44,7 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 dev = [
+  "mypy < 2",
   "pre-commit < 4",
   "ruff < 1",
 ]
@@ -62,10 +65,20 @@ target-version = "py39"
 
 [tool.ruff.lint]
 select = ["ALL"]
-ignore = ["D"]
+ignore = ["ANN", "D"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["xlsx_serializer"]
 required-imports = [
   "from __future__ import annotations",
 ]
+
+# Mypy
+# https://mypy.readthedocs.io/en/stable/config_file.html
+
+[tool.mypy]
+mypy_path = "src/"
+exclude = [
+  "^build/",
+]
+strict = true
