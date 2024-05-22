@@ -41,7 +41,9 @@ dynamic = ["version"]
 "Repository" = "https://github.com/paduszyk/django-xlsx-serializer"
 
 [project.optional-dependencies]
-dev = []
+dev = [
+  "pre-commit < 4",
+]
 
 # Setuptools
 # https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
