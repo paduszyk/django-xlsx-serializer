@@ -17,3 +17,10 @@ dist/
 
 # Mypy
 .mypy_cache/
+
+# Pytest
+.pytest_cache/
+
+# Coverage.py
+.coverage
+coverage.xml

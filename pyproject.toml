@@ -46,6 +46,9 @@ dynamic = ["version"]
 dev = [
   "mypy < 2",
   "pre-commit < 4",
+  "pytest < 9",
+  "pytest-cov < 6",
+  "pytest-custom-exit-code < 1",
   "ruff < 1",
 ]
 
@@ -67,11 +70,25 @@ target-version = "py39"
 select = ["ALL"]
 ignore = ["ANN", "D"]
 
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["ARG", "E501", "FBT", "PLR2004", "S101"]
+
 [tool.ruff.lint.isort]
 known-first-party = ["xlsx_serializer"]
 required-imports = [
   "from __future__ import annotations",
 ]
+section-order = [
+  "future",
+  "standard-library",
+  "third-party",
+  "first-party",
+  "tests",
+  "local-folder",
+]
+
+[tool.ruff.lint.isort.sections]
+"tests" = ["tests"]
 
 # Mypy
 # https://mypy.readthedocs.io/en/stable/config_file.html
@@ -82,3 +99,50 @@ exclude = [
   "^build/",
 ]
 strict = true
+
+[[tool.mypy.overrides]]
+module = [
+  "pytest",
+]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = [
+  "tests.*",
+]
+disallow_untyped_decorators = false
+
+# Pytest
+# https://docs.pytest.org/en/latest/reference/reference.html#configuration-options
+
+[tool.pytest.ini_options]
+addopts = [
+  # pytest-cov
+  # https://pytest-cov.readthedocs.io/en/latest/config.html#reference
+  "--cov",
+  "--cov-append",
+  "--cov-branch",
+  "--cov-report=term-missing:skip-covered",
+  "--cov-report=xml",
+  # pytest-custom-exit-code
+  # https://github.com/yashtodi94/pytest-custom_exit_code?tab=readme-ov-file#usage
+  "--suppress-no-test-exit-code",
+]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+pythonpath = [".", "src/"]
+testpaths = ["tests/"]
+
+# Coverage.py
+# https://coverage.readthedocs.io/en/latest/config.html
+
+[tool.coverage.run]
+source = ["src/"]
+
+[tool.coverage.report]
+exclude_also = [
+  "if TYPE_CHECKING:",
+]
+
+[tool.coverage.xml]
+output = "coverage.xml"
