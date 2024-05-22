@@ -52,6 +52,7 @@ dynamic = ["version"]
 [project.optional-dependencies]
 dev = [
   "django-stubs[compatible-mypy] < 6",
+  "nox",
   "pre-commit < 4",
   "pytest < 9",
   "pytest-cov < 6",
@@ -123,12 +124,14 @@ plugins = [
 
 [[tool.mypy.overrides]]
 module = [
+  "nox",
   "pytest",
 ]
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
 module = [
+  "noxfile",
   "tests.*",
 ]
 disallow_untyped_decorators = false

@@ -30,3 +30,6 @@ coverage.xml
 
 # Environment variables
 .env
+
+# Nox
+.nox/
