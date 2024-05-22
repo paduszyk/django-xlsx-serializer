@@ -21,3 +21,10 @@ repos:
     rev: "v0.13.0"
     hooks:
       - id: markdownlint-cli2
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: "v0.4.4"
+    hooks:
+      - id: ruff
+      - id: ruff-format
+        args:
+          - --diff
