@@ -1,0 +1,29 @@
+name: Documentation
+description: >-
+  Suggest how to improve the documentation.
+labels:
+  - needs triage
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: >-
+        Describe the documentation improvement you would like to suggest.
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Terms
+      description: >-
+        Before submitting the issue, confirm the following:
+      options:
+        - label: >-
+            I have read and followed the project's
+            [Code of Conduct](https://github.com/paduszyk/django-xlsx-serializer/blob/main/docs/CODE_OF_CONDUCT.md) and
+            [Contributing Guide](https://github.com/paduszyk/django-xlsx-serializer/blob/main/docs/CONTRIBUTING.md).
+          required: true
+        - label: >-
+            I checked that this issue isn't a duplicate.
+          required: true

@@ -1,0 +1,30 @@
+name: Question / Discussion
+description: >-
+  Use this form if you're not sure how to categorize your issue or if you want to start
+  a conversation on a specific topic related to the project.
+labels:
+  - needs triage
+body:
+  - type: textarea
+    id: question-or-discussion-topic
+    attributes:
+      label: Question or discussion topic
+      description: >-
+        Ask a question or present the topic you'd like to discuss.
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Terms
+      description: >-
+        Before submitting the issue, confirm the following:
+      options:
+        - label: >-
+            I have read and followed the project's
+            [Code of Conduct](https://github.com/paduszyk/django-xlsx-serializer/blob/main/docs/CODE_OF_CONDUCT.md) and
+            [Contributing Guide](https://github.com/paduszyk/django-xlsx-serializer/blob/main/docs/CONTRIBUTING.md).
+          required: true
+        - label: >-
+            I checked that this issue isn't a duplicate.
+          required: true

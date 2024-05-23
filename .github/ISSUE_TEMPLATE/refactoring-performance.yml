@@ -1,0 +1,29 @@
+name: Refactoring / Performance
+description: >-
+  Propose how to refactor the code or improve its performance.
+labels:
+  - needs triage
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: >-
+        Describe any refactoring or performance improvement you'd like to apply.
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Terms
+      description: >-
+        Before submitting the issue, confirm the following:
+      options:
+        - label: >-
+            I have read and followed the project's
+            [Code of Conduct](https://github.com/paduszyk/django-xlsx-serializer/blob/main/docs/CODE_OF_CONDUCT.md) and
+            [Contributing Guide](https://github.com/paduszyk/django-xlsx-serializer/blob/main/docs/CONTRIBUTING.md).
+          required: true
+        - label: >-
+            I checked that this issue isn't a duplicate.
+          required: true
