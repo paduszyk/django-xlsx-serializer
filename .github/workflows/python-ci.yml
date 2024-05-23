@@ -10,6 +10,7 @@ on:
 
 jobs:
   get-python-versions:
+    if: ${{ !startsWith(github.event.head_commit.message, 'bump:') }}
     name: Get Python versions
     runs-on: ubuntu-latest
     outputs:
@@ -23,6 +24,7 @@ jobs:
           echo "$(python ./scripts/get_python_versions.py)" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
   format-nox-sessions:
+    if: ${{ !startsWith(github.event.head_commit.message, 'bump:') }}
     name: Format Nox sessions
     runs-on: ubuntu-latest
     outputs:
