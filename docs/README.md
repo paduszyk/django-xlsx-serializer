@@ -1,5 +1,10 @@
 # django-xlsx-serializer
 
+[![PyPI: Version](https://img.shields.io/pypi/v/django-xlsx-serializer?style=flat-square&logo=pypi&logoColor=white)][pypi]
+[![PyPI: Python](https://img.shields.io/pypi/pyversions/django-xlsx-serializer?style=flat-square&logo=python&logoColor=white)][pypi]
+[![PyPI: Django](https://img.shields.io/pypi/djversions/django-xlsx-serializer?style=flat-square&color=0C4B33&label=django&logo=django)][pypi]
+[![PyPI: License](https://img.shields.io/pypi/l/django-xlsx-serializer?style=flat-square)][pypi]
+
 [![Pre-commit](https://img.shields.io/github/actions/workflow/status/paduszyk/django-xlsx-serializer/pre-commit-run.yml?style=flat-square&label=pre-commit&logo=pre-commit)][pre-commit]
 [![Python: CI](https://img.shields.io/github/actions/workflow/status/paduszyk/django-xlsx-serializer/python-ci.yml?style=flat-square&logo=github&label=CI)][python-ci]
 [![Codecov](https://img.shields.io/codecov/c/github/paduszyk/django-xlsx-serializer?style=flat-square&logo=codecov)][codecov]
