@@ -52,6 +52,7 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 dev = [
+  "commitizen < 4",
   "django-stubs[compatible-mypy] < 6",
   "nox",
   "pre-commit < 4",
@@ -70,6 +71,16 @@ dev = [
 
 [tool.setuptools.dynamic]
 version = { attr = "xlsx_serializer.__version__" }
+
+# Commitizen
+# https://commitizen-tools.github.io/commitizen/config/
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.1.0"
+version_files = [
+  "src/xlsx_serializer/__init__.py:__version__",
+]
 
 # Ruff
 # https://docs.astral.sh/ruff/configuration/
