@@ -1,0 +1,15 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: Code of Conduct
+    url: https://github.com/paduszyk/django-xlsx-serializer/blob/main/docs/CODE_OF_CONDUCT.md
+    about: |
+      All contributors must agree to follow our Code of Conduct.
+  - name: Contributing Guide
+    url: https://github.com/paduszyk/django-xlsx-serializer/blob/main/docs/CONTRIBUTING.md
+    about: |
+      Please read through before making any contribution.
+  - name: GitHub Community Guidelines
+    url: https://docs.github.com/en/site-policy/github-terms/github-community-guidelines
+    about: |
+      The article discussing GitHub's rules for user behavior and community conduct.
