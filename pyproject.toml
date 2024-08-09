@@ -78,7 +78,7 @@ version = { attr = "xlsx_serializer.__version__" }
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "1.0.0"
+version = "1.0.1"
 version_files = [
   "src/xlsx_serializer/__init__.py:__version__",
 ]
