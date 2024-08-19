@@ -240,7 +240,7 @@ Other key points:
 - The app handles deserialization from natural keys by using `ast.literal_eval`.
   Make sure to provide the keys that are valid string representations of the
   corresponding values (i.e., tuples of primitive Python literals; in most
-  cases, they are strings &nddash; if so, use single quotes as text delimiters).
+  cases, they are strings &mdash; if so, use single quotes as text delimiters).
 
 ## Contributing
 
