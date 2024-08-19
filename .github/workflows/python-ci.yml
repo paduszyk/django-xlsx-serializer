@@ -117,7 +117,7 @@ jobs:
           name: coverage-${{ matrix.session.name }}
           path: coverage.xml
   codecov-upload:
-    name: Uplaod coverage to Codecov
+    name: Upload coverage to Codecov
     needs:
       - test
     runs-on: ubuntu-latest
