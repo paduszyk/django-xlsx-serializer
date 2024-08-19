@@ -21,7 +21,7 @@ if TYPE_CHECKING:
         True,
     ],
 )
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_boolean_field_is_deserialized(fixture_path: Path, field_value: bool) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -47,7 +47,7 @@ def test_boolean_field_is_deserialized(fixture_path: Path, field_value: bool) ->
         True,
     ],
 )
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_boolean_field_is_serialized(field_value: bool) -> None:
     # Arrange.
     obj = BooleanFieldModel._default_manager.create(pk=1, boolean_field=field_value)

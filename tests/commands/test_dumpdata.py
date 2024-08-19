@@ -16,7 +16,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_dumpdata_command_invokes_serializer(fixture_path: Path) -> None:
     # Arrange.
     DummyModel._default_manager.create()
@@ -33,7 +33,7 @@ def test_dumpdata_command_invokes_serializer(fixture_path: Path) -> None:
     serializer_mock["serialize"].assert_called()
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_dumpdata_command_warns_if_output_is_not_provided() -> None:
     # Arrange.
     DummyModel._default_manager.create()
@@ -46,7 +46,7 @@ def test_dumpdata_command_warns_if_output_is_not_provided() -> None:
         call_command("dumpdata", format="xlsx")
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_dumpdata_command_warns_if_there_is_nothing_to_serialize(
     fixture_path: Path,
 ) -> None:
@@ -61,7 +61,7 @@ def test_dumpdata_command_warns_if_there_is_nothing_to_serialize(
         call_command("dumpdata", format="xlsx", output=fixture_path)
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_dumpdata_command_saves_workbook_if_output_is_provided(
     fixture_path: Path,
 ) -> None:
@@ -76,7 +76,7 @@ def test_dumpdata_command_saves_workbook_if_output_is_provided(
     workbook_save_mock.assert_called_with(str(fixture_path))
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_dumpdata_command_does_not_save_workbook_if_output_is_not_provided() -> None:
     # Arrange.
     DummyModel._default_manager.create()

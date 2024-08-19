@@ -28,7 +28,7 @@ def _media_setup_and_cleanup() -> Generator[None, None, None]:
             shutil.rmtree(settings.MEDIA_ROOT)
 
 
-@pytest.fixture()
+@pytest.fixture
 def mock_file() -> Callable[[str], mock.Mock]:
     def _mock_file(filename: str) -> mock.Mock:
         file_mock = mock.MagicMock(spec=File)
@@ -39,7 +39,7 @@ def mock_file() -> Callable[[str], mock.Mock]:
     return _mock_file
 
 
-@pytest.fixture()
+@pytest.fixture
 def mock_image() -> Callable[[str], mock.Mock]:
     def _mock_image(filename: str) -> mock.Mock:
         image_file_mock = mock.MagicMock(spec=ImageFile)
@@ -50,6 +50,6 @@ def mock_image() -> Callable[[str], mock.Mock]:
     return _mock_image
 
 
-@pytest.fixture()
+@pytest.fixture
 def fixture_path(tmp_path: Path) -> Path:
     return tmp_path / "fixture.xlsx"

@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_char_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -33,7 +33,7 @@ def test_char_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.char_field == "value"
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_char_field_is_serialized() -> None:
     # Arrange.
     obj = CharFieldModel._default_manager.create(pk=1, char_field="value")
@@ -48,7 +48,7 @@ def test_char_field_is_serialized() -> None:
     assert wb["tests.CharFieldModel"]["B2"].value == "value"
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_text_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -67,7 +67,7 @@ def test_text_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.text_field == "value"
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_text_field_is_serialized() -> None:
     # Arrange.
     obj = TextFieldModel._default_manager.create(pk=1, text_field="value")
@@ -82,7 +82,7 @@ def test_text_field_is_serialized() -> None:
     assert wb["tests.TextFieldModel"]["B2"].value == "value"
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_slug_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -101,7 +101,7 @@ def test_slug_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.slug_field == "value"
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_slug_field_is_serialized() -> None:
     # Arrange.
     obj = SlugFieldModel._default_manager.create(pk=1, slug_field="value")
