@@ -21,7 +21,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_email_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -40,7 +40,7 @@ def test_email_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.email_field == "92403542+paduszyk@users.noreply.github.com."
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_email_field_is_serialized() -> None:
     # Arrange.
     obj = EmailFieldModel._default_manager.create(
@@ -58,7 +58,7 @@ def test_email_field_is_serialized() -> None:
     assert wb["tests.EmailFieldModel"]["B2"].value == "92403542+paduszyk@users.noreply.github.com."  # fmt: skip
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_generic_ip_address_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -77,7 +77,7 @@ def test_generic_ip_address_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.generic_ip_address_field == "127.0.0.1"
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_generic_ip_address_field_is_serialized() -> None:
     # Arrange.
     obj = GenericIPAddressFieldModel._default_manager.create(
@@ -95,7 +95,7 @@ def test_generic_ip_address_field_is_serialized() -> None:
     assert wb["GenericIPAddressFieldModel"]["B2"].value == "127.0.0.1"
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_json_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -114,7 +114,7 @@ def test_json_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.json_field == {"key_1": 42, "key_2": [42], "key_3": {"4": 2}}
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_json_field_is_serialized() -> None:
     # Arrange.
     obj = JSONFieldModel._default_manager.create(
@@ -132,7 +132,7 @@ def test_json_field_is_serialized() -> None:
     assert wb["tests.JSONFieldModel"]["B2"].value == '{"key_1": 42, "key_2": [42], "key_3": {"4": 2}}'  # fmt: skip
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_url_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -151,7 +151,7 @@ def test_url_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.url_field == "https://github.com/paduszyk/django-xlsx-serializer"
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_url_field_is_serialized() -> None:
     # Arrange.
     obj = URLFieldModel._default_manager.create(
@@ -169,7 +169,7 @@ def test_url_field_is_serialized() -> None:
     assert wb["tests.URLFieldModel"]["B2"].value == "https://github.com/paduszyk/django-xlsx-serializer"  # fmt: skip
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_uuid_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -188,7 +188,7 @@ def test_uuid_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.uuid_field == uuid.UUID("ebc54031-d5ae-4367-8033-e6fbaa3ca8d7")
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_uuid_field_is_serialized() -> None:
     # Arrange.
     obj = UUIDFieldModel._default_manager.create(

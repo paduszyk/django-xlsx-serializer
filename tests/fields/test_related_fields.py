@@ -20,7 +20,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_foreign_key_field_is_deserialized_with_auto_fks(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -54,7 +54,7 @@ def test_foreign_key_field_is_deserialized_with_auto_fks(fixture_path: Path) -> 
     assert obj.to_nk_model_field == related_natural_key_model_obj
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_foreign_key_field_is_deserialized_with_natural_fks(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -89,7 +89,7 @@ def test_foreign_key_field_is_deserialized_with_natural_fks(fixture_path: Path) 
     assert obj.to_nk_model_field == related_natural_key_model_obj
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_foreign_key_field_is_serialized_with_use_natural_fks_disabled() -> None:
     # Arrange
     obj = ForeignKeyModel._default_manager.create(
@@ -114,7 +114,7 @@ def test_foreign_key_field_is_serialized_with_use_natural_fks_disabled() -> None
     assert wb["tests.ForeignKeyModel"]["C2"].value == 2
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_foreign_key_field_is_serialized_with_use_natural_fks_enabled() -> None:
     # Arrange
     obj = ForeignKeyModel._default_manager.create(
@@ -138,7 +138,7 @@ def test_foreign_key_field_is_serialized_with_use_natural_fks_enabled() -> None:
     assert wb["tests.ForeignKeyModel"]["C2"].value == "('value', 42)"
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_one_to_one_field_is_deserialized_with_auto_fks(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -172,7 +172,7 @@ def test_one_to_one_field_is_deserialized_with_auto_fks(fixture_path: Path) -> N
     assert obj.to_nk_model_field == related_natural_key_model_obj
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_one_to_one_field_is_deserialized_with_natural_fks(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -207,7 +207,7 @@ def test_one_to_one_field_is_deserialized_with_natural_fks(fixture_path: Path) -
     assert obj.to_nk_model_field == related_natural_key_model_obj
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_one_to_one_field_is_serialized_with_use_natural_fks_disabled() -> None:
     # Arrange
     obj = OneToOneFieldModel._default_manager.create(
@@ -232,7 +232,7 @@ def test_one_to_one_field_is_serialized_with_use_natural_fks_disabled() -> None:
     assert wb["tests.OneToOneFieldModel"]["C2"].value == 2
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_one_to_one_field_is_serialized_with_use_natural_foreign_keys_enabled() -> None:
     # Arrange
     obj = OneToOneFieldModel._default_manager.create(
@@ -256,7 +256,7 @@ def test_one_to_one_field_is_serialized_with_use_natural_foreign_keys_enabled() 
     assert wb["tests.OneToOneFieldModel"]["C2"].value == "('value', 42)"
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_many_to_many_field_is_deserialized_with_auto_fks(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -302,7 +302,7 @@ def test_many_to_many_field_is_deserialized_with_auto_fks(fixture_path: Path) ->
     ]
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_many_to_many_field_is_deserialized_with_natural_fks(fixture_path: Path) -> None:  # fmt: skip
     # Arrange.
     wb = openpyxl.Workbook()
@@ -348,7 +348,7 @@ def test_many_to_many_field_is_deserialized_with_natural_fks(fixture_path: Path)
     ]
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_many_to_many_field_is_serialized_with_use_natural_fks_disabled() -> None:
     # Arrange.
     obj = ManyToManyFieldModel._default_manager.create(pk=1)
@@ -381,7 +381,7 @@ def test_many_to_many_field_is_serialized_with_use_natural_fks_disabled() -> Non
     assert wb["tests.ManyToManyFieldModel"]["C2"].value == "[3, 4]"
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_many_to_many_field_is_serialized_with_use_natural_fks_enabled() -> None:
     # Arrange.
     obj = ManyToManyFieldModel._default_manager.create(pk=1)

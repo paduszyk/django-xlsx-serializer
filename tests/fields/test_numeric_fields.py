@@ -24,7 +24,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_integer_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -43,7 +43,7 @@ def test_integer_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.integer_field == 42
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_integer_field_is_serialized() -> None:
     # Arrange.
     obj = IntegerFieldModel._default_manager.create(pk=1, integer_field=42)
@@ -58,7 +58,7 @@ def test_integer_field_is_serialized() -> None:
     assert wb["tests.IntegerFieldModel"]["B2"].value == 42
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_big_integer_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -77,7 +77,7 @@ def test_big_integer_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.big_integer_field == 42
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_big_integer_field_is_serialized() -> None:
     # Arrange.
     obj = BigIntegerFieldModel._default_manager.create(pk=1, big_integer_field=42)
@@ -92,7 +92,7 @@ def test_big_integer_field_is_serialized() -> None:
     assert wb["tests.BigIntegerFieldModel"]["B2"].value == 42
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_small_integer_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -111,7 +111,7 @@ def test_small_integer_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.small_integer_field == 42
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_small_integer_field_is_serialized() -> None:
     # Arrange.
     obj = SmallIntegerFieldModel._default_manager.create(pk=1, small_integer_field=42)
@@ -126,7 +126,7 @@ def test_small_integer_field_is_serialized() -> None:
     assert wb["tests.SmallIntegerFieldModel"]["B2"].value == 42
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_positive_integer_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -145,7 +145,7 @@ def test_positive_integer_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.positive_integer_field == 42
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_positive_integer_field_is_serialized() -> None:
     # Arrange.
     obj = PositiveIntegerFieldModel._default_manager.create(
@@ -163,7 +163,7 @@ def test_positive_integer_field_is_serialized() -> None:
     assert wb["tests.PositiveIntegerFieldModel"]["B2"].value == 42
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_positive_big_integer_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -182,7 +182,7 @@ def test_positive_big_integer_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.positive_big_integer_field == 42
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_positive_big_integer_field_is_serialized() -> None:
     # Arrange.
     obj = PositiveBigIntegerFieldModel._default_manager.create(
@@ -200,7 +200,7 @@ def test_positive_big_integer_field_is_serialized() -> None:
     assert wb["PositiveBigIntegerFieldModel"]["B2"].value == 42
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_positive_small_integer_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -219,7 +219,7 @@ def test_positive_small_integer_field_is_deserialized(fixture_path: Path) -> Non
     assert obj.positive_small_integer_field == 42
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_positive_small_integer_field_is_serialized() -> None:
     # Arrange.
     obj = PositiveSmallIntegerFieldModel._default_manager.create(
@@ -237,7 +237,7 @@ def test_positive_small_integer_field_is_serialized() -> None:
     assert wb["PositiveSmallIntegerFieldModel"]["B2"].value == 42
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_decimal_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -256,7 +256,7 @@ def test_decimal_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.decimal_field == Decimal("4.2")
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_decimal_field_is_serialized() -> None:
     # Arrange.
     obj = DecimalFieldModel._default_manager.create(pk=1, decimal_field=Decimal("4.2"))
@@ -271,7 +271,7 @@ def test_decimal_field_is_serialized() -> None:
     assert wb["tests.DecimalFieldModel"]["B2"].value == Decimal("4.2")
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_float_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -290,7 +290,7 @@ def test_float_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.float_field == 4.2
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_float_field_is_serialized() -> None:
     # Arrange.
     obj = FloatFieldModel._default_manager.create(pk=1, float_field=4.2)

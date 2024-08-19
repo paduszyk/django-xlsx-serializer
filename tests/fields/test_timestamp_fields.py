@@ -21,7 +21,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_date_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -40,7 +40,7 @@ def test_date_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.date_field == datetime.date(2024, 4, 2)
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_date_field_is_serialized() -> None:
     # Arrange.
     obj = DateFieldModel._default_manager.create(
@@ -58,7 +58,7 @@ def test_date_field_is_serialized() -> None:
     assert wb["tests.DateFieldModel"]["B2"].value == "2024-04-02"
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_time_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -77,7 +77,7 @@ def test_time_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.time_field == datetime.time(22, 44, 42)
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_time_field_is_serialized() -> None:
     # Arrange.
     obj = TimeFieldModel._default_manager.create(
@@ -98,7 +98,7 @@ def test_time_field_is_serialized() -> None:
 @override_settings(
     USE_TZ=False,
 )
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_datetime_field_is_deserialized_with_tz_disabled(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -120,7 +120,7 @@ def test_datetime_field_is_deserialized_with_tz_disabled(fixture_path: Path) -> 
 @override_settings(
     USE_TZ=True,
 )
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_datetime_field_is_deserialized_with_tz_enabled(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -145,7 +145,7 @@ def test_datetime_field_is_deserialized_with_tz_enabled(fixture_path: Path) -> N
 @override_settings(
     USE_TZ=False,
 )
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_datetime_field_is_serialized_with_tz_disabled() -> None:
     # Arrange.
     obj = DateTimeFieldModel._default_manager.create(
@@ -166,7 +166,7 @@ def test_datetime_field_is_serialized_with_tz_disabled() -> None:
 @override_settings(
     USE_TZ=True,
 )
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_datetime_field_is_serialized_with_tz_enabled() -> None:
     # Arrange.
     obj = DateTimeFieldModel._default_manager.create(
@@ -187,7 +187,7 @@ def test_datetime_field_is_serialized_with_tz_enabled() -> None:
     assert wb["tests.DateTimeFieldModel"]["B2"].value == "2024-04-02T22:44:42+02:00"
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_duration_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -206,7 +206,7 @@ def test_duration_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.duration_field == datetime.timedelta(hours=4, minutes=2, seconds=42)
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_duration_field_is_serialized() -> None:
     # Arrange.
     obj = DurationFieldModel._default_manager.create(

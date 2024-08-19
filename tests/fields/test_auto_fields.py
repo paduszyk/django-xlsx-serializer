@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_auto_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -31,7 +31,7 @@ def test_auto_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.auto_field == 42
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_auto_field_is_serialized() -> None:
     # Arrange.
     obj = AutoFieldModel._default_manager.create()
@@ -44,7 +44,7 @@ def test_auto_field_is_serialized() -> None:
     assert wb["tests.AutoFieldModel"]["A2"].value == obj.pk
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_big_auto_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -61,7 +61,7 @@ def test_big_auto_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.big_auto_field == 42
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_big_auto_field_is_serialized() -> None:
     # Arrange.
     obj = BigAutoFieldModel._default_manager.create()
@@ -74,7 +74,7 @@ def test_big_auto_field_is_serialized() -> None:
     assert wb["tests.BigAutoFieldModel"]["A2"].value == obj.pk
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_small_auto_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -91,7 +91,7 @@ def test_small_auto_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.small_auto_field == 42
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_small_auto_field_is_serialized() -> None:
     # Arrange.
     obj = SmallAutoFieldModel._default_manager.create()

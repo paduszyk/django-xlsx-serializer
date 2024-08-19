@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     from unittest import mock
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_file_field_is_deserialized(
     fixture_path: Path,
     mock_file: Callable[[str], mock.Mock],
@@ -37,7 +37,7 @@ def test_file_field_is_deserialized(
     assert obj.file_field == mock_file("file.txt")
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_file_field_is_serialized(mock_file: Callable[[str], mock.Mock]) -> None:
     # Arrange.
     obj = FileFieldModel._default_manager.create(pk=1, file_field=mock_file("file.txt"))
@@ -52,7 +52,7 @@ def test_file_field_is_serialized(mock_file: Callable[[str], mock.Mock]) -> None
     assert wb["tests.FileFieldModel"]["B2"].value == "file.txt"
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_image_field_is_deserialized(
     fixture_path: Path,
     mock_image: Callable[[str], mock.Mock],
@@ -74,7 +74,7 @@ def test_image_field_is_deserialized(
     assert obj.image_field == mock_image("image.png")
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_image_field_is_serialized(mock_image: Callable[[str], mock.Mock]) -> None:
     # Arrange.
     obj = ImageFieldModel._default_manager.create(
@@ -92,7 +92,7 @@ def test_image_field_is_serialized(mock_image: Callable[[str], mock.Mock]) -> No
     assert wb["tests.ImageFieldModel"]["B2"].value == "image.png"
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_file_path_field_is_deserialized(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()
@@ -111,7 +111,7 @@ def test_file_path_field_is_deserialized(fixture_path: Path) -> None:
     assert obj.file_path_field == "file.txt"
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_file_path_field_is_serialized() -> None:
     # Arrange.
     obj = FilePathFieldModel._default_manager.create(pk=1, file_path_field="file.txt")

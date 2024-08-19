@@ -12,7 +12,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_loaddata_command_invokes_deserializer(fixture_path: Path) -> None:
     # Arrange.
     wb = openpyxl.Workbook()

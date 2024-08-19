@@ -152,7 +152,7 @@ def test_deserializer_reads_empty_cells_as_none(fixture_path: Path) -> None:
         "None",
     ],
 )
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_django_handles_empty_non_nullable_fields(
     fixture_path: Path,
     empty_value: str | None,

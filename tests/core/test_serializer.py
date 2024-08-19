@@ -19,7 +19,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_serializer_saves_workbook_if_stream_is_valid(fixture_path: Path) -> None:
     # Arrange.
     obj = DummyModel._default_manager.create()
@@ -40,7 +40,7 @@ def test_serializer_raises_error_if_stream_is_invalid() -> None:
         serialize("xlsx", [], stream=mock.ANY)
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_serializer_applies_shortened_sheet_name_if_model_label_is_too_long() -> None:
     # Arrange.
     obj = LabelLongerThan31CharactersModel._default_manager.create()
@@ -52,7 +52,7 @@ def test_serializer_applies_shortened_sheet_name_if_model_label_is_too_long() ->
     assert "LabelLongerThan31CharactersMode" in wb
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_serializer_emits_runtime_warning_if_model_label_is_too_long() -> None:
     # Arrange.
     obj = LabelLongerThan31CharactersModel._default_manager.create()
@@ -72,7 +72,7 @@ def test_serializer_emits_runtime_warning_if_model_label_is_too_long() -> None:
     assert "LabelLongerThan31CharactersMode" in wb
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_serializer_raises_error_if_conflicting_default_sheet_names_are_found() -> None:
     # Arrange.
     obj_a = LabelLongerThan31CharactersModelA._default_manager.create()
@@ -91,7 +91,7 @@ def test_serializer_raises_error_if_conflicting_default_sheet_names_are_found() 
         serialize("xlsx", [obj_a, obj_b])
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_serializer_applies_sheet_name_from_model_sheet_names_option() -> None:
     # Arrange.
     obj = DummyModel._default_manager.create()
@@ -218,7 +218,7 @@ def test_serializer_raises_error_if_sheet_name_from_model_sheet_names_option_con
         )
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_serializer_removes_sheets_not_added_by_itself() -> None:
     # Arrange.
     obj_1 = DummyModel._default_manager.create()
