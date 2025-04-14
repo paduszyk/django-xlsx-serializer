@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "django-xlsx-serializer"
 dependencies = [
-  "django >= 3.2, < 5.2",
+  "django >= 3.2, < 5.3",
   "openpyxl < 4",
   "typing-extensions < 5",
 ]
@@ -34,6 +34,7 @@ classifiers = [
   "Framework :: Django :: 4.2",
   "Framework :: Django :: 5.0",
   "Framework :: Django :: 5.1",
+  "Framework :: Django :: 5.2",
   "Intended Audience :: Developers",
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
