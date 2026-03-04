@@ -414,7 +414,7 @@ ruff = [
 
 [package.metadata]
 requires-dist = [
-    { name = "django", specifier = ">=3.2,<5.3" },
+    { name = "django", specifier = ">=3.2,<6.1" },
     { name = "openpyxl", specifier = "<4" },
     { name = "typing-extensions", specifier = "<5" },
 ]
