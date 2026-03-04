@@ -56,7 +56,6 @@ dynamic = ["version"]
 [dependency-groups]
 dev = [
   "commitizen < 4",
-  "pre-commit < 4",
   { include-group = "mypy" },
   { include-group = "nox" },
   { include-group = "pytest" },

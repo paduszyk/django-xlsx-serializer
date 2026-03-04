@@ -5,7 +5,6 @@
 [![PyPI: Django](https://img.shields.io/pypi/djversions/django-xlsx-serializer?style=flat-square&color=0C4B33&label=django&logo=django)][pypi]
 [![PyPI: License](https://img.shields.io/pypi/l/django-xlsx-serializer?style=flat-square)][pypi]
 
-[![Pre-commit](https://img.shields.io/github/actions/workflow/status/paduszyk/django-xlsx-serializer/pre-commit-run.yml?style=flat-square&label=pre-commit&logo=pre-commit)][pre-commit]
 [![Python: CI](https://img.shields.io/github/actions/workflow/status/paduszyk/django-xlsx-serializer/python-ci.yml?style=flat-square&logo=github&label=CI)][python-ci]
 [![Codecov](https://img.shields.io/codecov/c/github/paduszyk/django-xlsx-serializer?style=flat-square&logo=codecov)][codecov]
 
@@ -271,7 +270,6 @@ Released under the [MIT license][license].
 [nox]: https://github.com/wntrblm/nox
 [openpyxl]: https://openpyxl.readthedocs.io/en/stable/
 [paduszyk]: https://github.com/paduszyk
-[pre-commit]: https://github.com/paduszyk/django-xlsx-serializer/actions/workflows/pre-commit-run.yml
 [prettier]: https://prettier.io
 [pypi]: https://pypi.org/project/django-xlsx-serializer/
 [python-ci]: https://github.com/paduszyk/django-xlsx-serializer/actions/workflows/python-ci.yml

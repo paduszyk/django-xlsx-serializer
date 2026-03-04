@@ -1,0 +1,27 @@
+# Lefthook
+# https://lefthook.dev/configuration
+
+min_version: 2.1.2
+
+pre-commit:
+  jobs:
+    - name: Prettier
+      run: npx --no-install prettier --check .
+    - name: uv
+      group:
+        jobs:
+          - name: Lockfile check
+            run: uv lock --check
+    - name: Ruff
+      group:
+        jobs:
+          - name: Linter
+            run: uv run ruff check .
+          - name: Formatter
+            run: uv run ruff format --check .
+      env:
+        UV_LOCKED: "true"
+    - name: mypy
+      run: uv run mypy .
+      env:
+        UV_LOCKED: "true"

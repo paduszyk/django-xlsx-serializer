@@ -33,3 +33,6 @@ coverage.xml
 
 # Nox
 .nox/
+
+# Lefthook
+.lefthook-local.yml

@@ -64,10 +64,10 @@ To contribute to the project via a pull request, follow the instructions:
    > This will install the project in editable mode along with all dependencies
    > including development dependency groups.
 
-5. Install [Pre-commit][pre-commit] hooks:
+5. Install Git hooks using [Lefthook][lefthook]:
 
    ```console
-   pre-commit install
+   npx lefthook install --force
    ```
 
 6. Check the setup by running [Nox][nox]:
@@ -129,11 +129,11 @@ style throughout the entire codebase.
 - [Mypy][mypy] is incorporated to perform the Python type-checking.
 
 All those tools are in the package's development dependencies, so they can be
-used separately on demand. They are also set up as Pre-commit hooks, so one can
+used separately on demand. They are also set up as pre-commit hooks, so one can
 run them collectively:
 
 ```console
-pre-commit run --all-files
+npx lefthook run pre-commit --all-files
 ```
 
 [action-semantic-pull-request]: https://github.com/amannn/action-semantic-pull-request
@@ -147,10 +147,10 @@ pre-commit run --all-files
 [github-docs]: https://docs.github.com/en/get-started/quickstart/contributing-to-projects
 [markdownlint]: https://github.com/DavidAnson/markdownlint
 [mypy]: https://mypy.readthedocs.io
+[lefthook]: https://lefthook.dev
 [node]: https://nodejs.org/
 [nox]: https://github.com/wntrblm/nox
 [open-issue]: https://github.com/paduszyk/django-xlsx-serializer/issues/new/choose
-[pre-commit]: https://pre-commit.com
 [prettier]: https://prettier.io
 [pyenv]: https://github.com/pyenv/pyenv
 [python-version]: https://github.com/paduszyk/django-xlsx-serializer/blob/main/.python-version
