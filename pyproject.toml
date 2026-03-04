@@ -53,20 +53,35 @@ dynamic = ["version"]
 [project.urls]
 "Repository" = "https://github.com/paduszyk/django-xlsx-serializer"
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
   "commitizen < 4",
-  "django-stubs[compatible-mypy] < 6",
-  "nox",
   "pre-commit < 4",
+  { include-group = "mypy" },
+  { include-group = "nox" },
+  { include-group = "pytest" },
+  { include-group = "ruff" },
+]
+mypy = [
+  "django-stubs[compatible-mypy] < 6",
+  "types-openpyxl < 4",
+  { include-group = "nox" },
+  { include-group = "pytest" },
+]
+nox = [
+  "nox < 2027",
+  "nox-uv < 1",
+]
+pytest = [
+  "psycopg2-binary < 3",
   "pytest < 9",
   "pytest-cov < 6",
   "pytest-django < 5",
   "pytest-custom-exit-code < 1",
-  "psycopg2-binary < 3",
   "python-dotenv < 2",
+]
+ruff = [
   "ruff < 1",
-  "types-openpyxl < 4",
 ]
 
 # Setuptools

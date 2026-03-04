@@ -43,7 +43,7 @@ def format_nox_session(session: dict[str, Any]) -> dict[str, str]:
 def format_nox_sessions(tag: str) -> str:
     sessions = json.loads(
         subprocess.check_output(  # noqa: S603
-            f"{sys.executable} -m nox --tag {tag} --list-sessions --json".split(),
+            f"{sys.executable} -m nox --tags {tag} --list-sessions --json".split(),
         ),
     )
 

@@ -9,20 +9,6 @@ on:
       - main
 
 jobs:
-  get-python-versions:
-    if: ${{ !startsWith(github.event.head_commit.message, 'bump:') }}
-    name: Get Python versions
-    runs-on: ubuntu-latest
-    outputs:
-      python-versions: ${{ steps.python-versions.outputs.python-versions }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-      - id: python-versions
-        run: |
-          echo "python-versions<<EOF" >> $GITHUB_OUTPUT
-          echo "$(python ./scripts/get_python_versions.py)" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
   format-nox-sessions:
     if: ${{ !startsWith(github.event.head_commit.message, 'bump:') }}
     name: Format Nox sessions
@@ -33,20 +19,18 @@ jobs:
       test-sessions: ${{ steps.nox-sessions.outputs.test-sessions }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: astral-sh/setup-uv@v7
         with:
-          cache: pip
-      - run: python -m pip install --upgrade pip
-      - run: python -m pip install nox
+          enable-cache: true
+      - run: uv sync --locked --only-group nox
       - id: nox-sessions
         run: |
-          echo "install-sessions=$(python ./scripts/format_nox_sessions.py install)" >> $GITHUB_OUTPUT
-          echo "lint-sessions=$(python ./scripts/format_nox_sessions.py lint)" >> $GITHUB_OUTPUT
-          echo "test-sessions=$(python ./scripts/format_nox_sessions.py test)" >> $GITHUB_OUTPUT
+          echo "install-sessions=$(uv run ./scripts/format_nox_sessions.py install)" >> $GITHUB_OUTPUT
+          echo "lint-sessions=$(uv run ./scripts/format_nox_sessions.py lint)" >> $GITHUB_OUTPUT
+          echo "test-sessions=$(uv run ./scripts/format_nox_sessions.py test)" >> $GITHUB_OUTPUT
   install:
     name: ${{ matrix.session.job }}
     needs:
-      - get-python-versions
       - format-nox-sessions
     runs-on: ubuntu-latest
     strategy:
@@ -55,13 +39,11 @@ jobs:
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: astral-sh/setup-uv@v7
         with:
-          python-version: ${{ needs.get-python-versions.outputs.python-versions }}
-          cache: pip
-      - run: python -m pip install --upgrade pip
-      - run: python -m pip install nox
-      - run: nox --session "${{ matrix.session.name }}"
+          enable-cache: true
+      - run: uv sync --locked --only-group nox
+      - run: uv run --no-sync nox --session "${{ matrix.session.name }}"
   lint:
     name: ${{ matrix.session.job }}
     needs:
@@ -74,16 +56,14 @@ jobs:
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: astral-sh/setup-uv@v7
         with:
-          cache: pip
-      - run: python -m pip install --upgrade pip
-      - run: python -m pip install nox
-      - run: nox --session "${{ matrix.session.name }}"
+          enable-cache: true
+      - run: uv sync --locked --only-group nox
+      - run: uv run --no-sync nox --session "${{ matrix.session.name }}"
   test:
     name: ${{ matrix.session.job }}
     needs:
-      - get-python-versions
       - format-nox-sessions
       - install
     runs-on: ubuntu-latest
@@ -105,13 +85,11 @@ jobs:
           - 5432:5432
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: astral-sh/setup-uv@v7
         with:
-          python-version: ${{ needs.get-python-versions.outputs.python-versions }}
-          cache: pip
-      - run: python -m pip install --upgrade pip
-      - run: python -m pip install nox
-      - run: nox --session "${{ matrix.session.name }}"
+          enable-cache: true
+      - run: uv sync --locked --only-group nox
+      - run: uv run --no-sync nox --session "${{ matrix.session.name }}"
       - uses: actions/upload-artifact@v4
         with:
           name: coverage-${{ matrix.session.name }}

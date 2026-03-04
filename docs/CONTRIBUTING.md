@@ -44,20 +44,25 @@ To contribute to the project via a pull request, follow the instructions:
    > This assumes you have Node on your machine. If you don't, download and
    > install the latest release from the official [Node.js][node] website.
 
-3. Create and activate the virtual environment:
+3. Create a virtual environment:
 
    ```console
-   python -m venv .venv && source .venv/bin/activate
+   uv venv
    ```
 
-   > See the [`.python-version`][python-version] file to check the interpreter
-   > version used in the development.
+   > This assumes you have [uv][uv] installed on your machine. If you don't,
+   > follow the [installation instructions][uv-installation]. The virtual
+   > environment will be created using the Python version from the
+   > [`.python-version`][python-version] file.
 
-4. Install the package in development mode:
+4. Install the package and its dependencies:
 
    ```console
-   pip install -e ".[dev]"
+   uv sync
    ```
+
+   > This will install the project in editable mode along with all dependencies
+   > including development dependency groups.
 
 5. Install [Pre-commit][pre-commit] hooks:
 
@@ -150,3 +155,5 @@ pre-commit run --all-files
 [pyenv]: https://github.com/pyenv/pyenv
 [python-version]: https://github.com/paduszyk/django-xlsx-serializer/blob/main/.python-version
 [ruff]: https://docs.astral.sh/ruff/
+[uv]: https://docs.astral.sh/uv/
+[uv-installation]: https://docs.astral.sh/uv/getting-started/installation/
