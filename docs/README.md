@@ -41,11 +41,11 @@ The app allows you to:
 
 | Python | Django                            | Database engines    |
 | :----- | :-------------------------------- | :------------------ |
-| 3.9    | 3.2, 4.0, 4.1, 4.2                | SQLite3, PostgreSQL |
 | 3.10   | 3.2, 4.0, 4.1, 4.2, 5.0, 5.1, 5.2 | SQLite3, PostgreSQL |
 | 3.11   | 4.1, 4.2, 5.0, 5.1, 5.2           | SQLite3, PostgreSQL |
 | 3.12   | 4.2, 5.0, 5.1, 5.2                | SQLite3, PostgreSQL |
 | 3.13   | 5.1, 5.2                          | SQLite3, PostgreSQL |
+| 3.14   | 5.2                               | SQLite3, PostgreSQL |
 
 All setups require OpenPyXL < 4.
 
