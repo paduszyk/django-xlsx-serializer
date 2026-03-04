@@ -3,6 +3,7 @@ from __future__ import annotations
 from itertools import chain
 
 import nox
+import nox_uv
 
 PYTHON_VERSIONS = [
     "3.9",
@@ -47,41 +48,31 @@ PYTEST_OPTIONS = [
 # Nox
 # https://nox.thea.codes/
 
+nox.options.default_venv_backend = "uv"
 
-@nox.session(tags=["install"])
+
+@nox_uv.session(tags=["install"])
 @nox.parametrize("python", PYTHON_VERSIONS)
 def install(session: nox.Session) -> None:
-    session.install(".")
+    pass
 
 
-@nox.session(tags=["lint"])
+@nox_uv.session(tags=["lint"], uv_only_groups=["ruff"])
 def ruff_lint(session: nox.Session) -> None:
-    session.install("ruff")
-
     session.run("ruff", "check", *RUFF_CHECK_OPTIONS, ".")
 
 
-@nox.session(tags=["lint"])
+@nox_uv.session(tags=["lint"], uv_only_groups=["ruff"])
 def ruff_format(session: nox.Session) -> None:
-    session.install("ruff")
-
     session.run("ruff", "format", *RUFF_FORMAT_OPTIONS, ".")
 
 
-@nox.session(tags=["lint"])
+@nox_uv.session(tags=["lint"], uv_groups=["mypy"])
 def mypy(session: nox.Session) -> None:
-    session.install("-e", ".")
-    session.install(
-        "django-stubs[compatible-mypy] < 6",
-        "psycopg2-binary < 3",
-        "python-dotenv < 2",
-        "types-openpyxl < 4",
-    )
-
     session.run("mypy", *MYPY_OPTIONS, ".")
 
 
-@nox.session(tags=["test"])
+@nox_uv.session(tags=["test"], uv_groups=["pytest"])
 @nox.parametrize("database_engine", DATABASE_ENGINES)
 @nox.parametrize(
     ("python", "django"),
@@ -95,16 +86,6 @@ def mypy(session: nox.Session) -> None:
 )
 def pytest(session: nox.Session, django: str, database_engine: str) -> None:
     session.install(f"django == {django}.*")
-    session.install("-e", ".")
-    session.install(
-        "psycopg2-binary < 3",
-        "pytest < 9",
-        "pytest-cov",
-        "pytest-custom-exit-code < 1",
-        "pytest-django < 5",
-        "python-dotenv < 2",
-    )
-
     session.run(
         "pytest",
         *PYTEST_OPTIONS,
