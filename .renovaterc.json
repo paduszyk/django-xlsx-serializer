@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "config:recommended",
+    "helpers:pinGitHubActionDigests",
+    ":disableDependencyDashboard"
+  ],
+  "lockFileMaintenance": {
+    "enabled": true
+  }
+}
