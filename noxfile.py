@@ -22,7 +22,7 @@ DJANGO_VERSIONS = {
 }
 
 DATABASE_ENGINES = [
-    # "postgresql",
+    "postgresql",
     "sqlite3",
 ]
 
