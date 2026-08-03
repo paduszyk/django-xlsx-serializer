@@ -4,7 +4,10 @@ import argparse
 import json
 import subprocess
 import sys
-from typing import Any, Callable
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 SESSION_NAME_FORMATS = {
     "install": "Install package (Python {python})",
