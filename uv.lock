@@ -335,7 +335,7 @@ wheels = [
 
 [[package]]
 name = "django-stubs"
-version = "5.2.9"
+version = "6.0.7"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "django", version = "5.2.16", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
@@ -345,9 +345,9 @@ dependencies = [
     { name = "types-pyyaml" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/9c/01/86c921e0e19c9fa7e705bf795998dbf55eb183e7be0342a3027dc1bcbc9f/django_stubs-5.2.9.tar.gz", hash = "sha256:c192257120b08785cfe6f2f1c91f1797aceae8e9daa689c336e52c91e8f6a493", size = 257970, upload-time = "2026-01-20T23:59:27.018Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/8a/90/087c6e424e705e05182e543ef6b366a59eb5c92ab008b0dbbba55f357a40/django_stubs-6.0.7.tar.gz", hash = "sha256:bc55431c0af745a64e39cf33a8d36c87dccbedeae2fe26fab47dd355270e8538", size = 282293, upload-time = "2026-07-14T10:08:27.122Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0d/05/4c9c419b7051eb4b350100b086be6df487f968ab672d3d370f8ccf7c3746/django_stubs-5.2.9-py3-none-any.whl", hash = "sha256:2317a7130afdaa76f6ff7f623650d7f3bf1b6c86a60f95840e14e6ec6de1a7cd", size = 508656, upload-time = "2026-01-20T23:59:25.12Z" },
+    { url = "https://files.pythonhosted.org/packages/02/86/230ae6056221b543d63f7710d73967fe1c6840693540e99ea3c54f45859c/django_stubs-6.0.7-py3-none-any.whl", hash = "sha256:7ed9a14c438e589272ca04e966dee82a4d1ff7ca5c2171bc986c50a0d03ec35b", size = 547460, upload-time = "2026-07-14T10:08:25.626Z" },
 ]
 
 [package.optional-dependencies]
@@ -429,7 +429,7 @@ requires-dist = [
 [package.metadata.requires-dev]
 dev = [
     { name = "commitizen", specifier = ">=3.31.0,<4.0.0" },
-    { name = "django-stubs", extras = ["compatible-mypy"], specifier = ">=5.2.9,<6.0.0" },
+    { name = "django-stubs", extras = ["compatible-mypy"], specifier = ">=6.0.7,<6.1.0" },
     { name = "nox", specifier = ">=2026.2.9,<2027.0.0" },
     { name = "nox-uv", specifier = ">=0.8.0,<0.9.0" },
     { name = "psycopg2-binary", specifier = ">=2.9.12,<3.0.0" },
@@ -441,7 +441,7 @@ dev = [
     { name = "types-openpyxl", specifier = ">=3.1.5.20250919,<4.0.0.0" },
 ]
 mypy = [
-    { name = "django-stubs", extras = ["compatible-mypy"], specifier = ">=5.2.9,<6.0.0" },
+    { name = "django-stubs", extras = ["compatible-mypy"], specifier = ">=6.0.7,<6.1.0" },
     { name = "nox", specifier = ">=2026.2.9,<2027.0.0" },
     { name = "nox-uv", specifier = ">=0.8.0,<0.9.0" },
     { name = "psycopg2-binary", specifier = ">=2.9.12,<3.0.0" },
