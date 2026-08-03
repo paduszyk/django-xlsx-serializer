@@ -3,7 +3,7 @@ from __future__ import annotations
 import shutil
 from contextlib import suppress
 from pathlib import Path
-from typing import TYPE_CHECKING, Callable
+from typing import TYPE_CHECKING
 from unittest import mock
 
 import pytest
@@ -14,7 +14,7 @@ from django.core.files.images import ImageFile
 from django.test.utils import override_settings
 
 if TYPE_CHECKING:
-    from collections.abc import Generator
+    from collections.abc import Callable, Generator
 
 
 @pytest.fixture(autouse=True)

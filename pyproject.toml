@@ -105,9 +105,6 @@ version_files = [
 # https://docs.astral.sh/ruff/rules/
 # https://docs.astral.sh/ruff/settings/
 
-[tool.ruff]
-target-version = "py39"
-
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = ["ANN", "D"]

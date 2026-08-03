@@ -339,7 +339,7 @@ class Deserializer:
             python_model_objects = [
                 {
                     "model": opts.label_lower,
-                    "fields": dict(zip(sheet_columns, worksheet_row)),
+                    "fields": dict(zip(sheet_columns, worksheet_row, strict=True)),
                 }
                 for worksheet_row in sheet.iter_rows(
                     min_row=sheet.min_row + 1,
