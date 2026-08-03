@@ -18,8 +18,8 @@ jobs:
       lint-sessions: ${{ steps.nox-sessions.outputs.lint-sessions }}
       test-sessions: ${{ steps.nox-sessions.outputs.test-sessions }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v7
+      - uses: actions/checkout@v7.0.1
+      - uses: astral-sh/setup-uv@v9.0.0
         with:
           enable-cache: true
       - run: uv sync --locked --only-group nox
@@ -38,8 +38,8 @@ jobs:
         session: ${{ fromJson(needs.format-nox-sessions.outputs.install-sessions) }}
       fail-fast: false
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v7
+      - uses: actions/checkout@v7.0.1
+      - uses: astral-sh/setup-uv@v9.0.0
         with:
           enable-cache: true
       - run: uv sync --locked --only-group nox
@@ -55,8 +55,8 @@ jobs:
         session: ${{ fromJson(needs.format-nox-sessions.outputs.lint-sessions) }}
       fail-fast: false
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v7
+      - uses: actions/checkout@v7.0.1
+      - uses: astral-sh/setup-uv@v9.0.0
         with:
           enable-cache: true
       - run: uv sync --locked --only-group nox
@@ -84,13 +84,13 @@ jobs:
         ports:
           - 5432:5432
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v7
+      - uses: actions/checkout@v7.0.1
+      - uses: astral-sh/setup-uv@v9.0.0
         with:
           enable-cache: true
       - run: uv sync --locked --only-group nox
       - run: uv run --no-sync nox --session "${{ matrix.session.name }}"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7.0.1
         with:
           name: coverage-${{ matrix.session.name }}
           path: coverage.xml
@@ -100,8 +100,8 @@ jobs:
       - test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-      - uses: codecov/codecov-action@v4
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/download-artifact@v8.0.1
+      - uses: codecov/codecov-action@v7.0.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
