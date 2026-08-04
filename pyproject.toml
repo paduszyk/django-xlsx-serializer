@@ -63,7 +63,7 @@ dev = [
   "commitizen>=3.31.0,<4.0.0",
 ]
 mypy = [
-  "django-stubs[compatible-mypy]>=5.2.9,<6.0.0",
+  "django-stubs[compatible-mypy]>=6.0.7,<6.1.0",
   "types-openpyxl>=3.1.5.20250919,<4.0.0.0",
   { include-group = "nox" },
   { include-group = "pytest" },
