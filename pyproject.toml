@@ -61,7 +61,7 @@ dev = [
   { include-group = "nox" },
   { include-group = "pytest" },
   { include-group = "ruff" },
-  "commitizen>=4.17.0,<4.18.0",
+  "commitizen>=4.18.0,<4.19.0",
 ]
 mypy = [
   "django-stubs[compatible-mypy]>=6.0.7,<6.1.0",
