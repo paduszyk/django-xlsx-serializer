@@ -8,9 +8,9 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "django-xlsx-serializer"
 dependencies = [
-  "django>=3.2,<6.2.0",
-  "openpyxl>=3.1.5,<4.0.0",
-  "typing-extensions>=4.15.0,<5.0.0",
+  "django>=3.2",
+  "openpyxl>=3.1.5",
+  "typing-extensions>=4.16.0",
 ]
 requires-python = ">= 3.10"
 authors = [
@@ -61,27 +61,27 @@ dev = [
   { include-group = "nox" },
   { include-group = "pytest" },
   { include-group = "ruff" },
-  "commitizen>=4.18.0,<4.19.0",
+  "commitizen>=4.18.0",
 ]
 mypy = [
-  "django-stubs[compatible-mypy]>=6.0.7,<6.1.0",
-  "types-openpyxl>=3.1.5.20250919,<4.0.0.0",
   { include-group = "nox" },
   { include-group = "pytest" },
+  "django-stubs[compatible-mypy]>=6.0.9",
+  "types-openpyxl>=3.1.5.20260807",
 ]
 nox = [
-  "nox>=2026.2.9,<2027.0.0",
-  "nox-uv>=0.8.0,<0.9.0",
+  "nox>=2026.8.17",
+  "nox-uv>=0.8.0",
 ]
 pytest = [
-  "psycopg2-binary>=2.9.12,<3.0.0",
-  "pytest>=9.1.1,<10.0.0",
-  "pytest-cov>=7.1.0,<8.0.0",
-  "pytest-django>=4.12.0,<5.0.0",
-  "python-dotenv>=1.2.2,<2.0.0",
+  "psycopg2-binary>=2.9.12",
+  "pytest>=9.1.1",
+  "pytest-cov>=7.1.0",
+  "pytest-django>=4.14.0",
+  "pytest-dotenv>=0.5.2",
 ]
 ruff = [
-  "ruff>=0.16.1,<0.17.0",
+  "ruff>=0.16.3",
 ]
 
 # Setuptools
