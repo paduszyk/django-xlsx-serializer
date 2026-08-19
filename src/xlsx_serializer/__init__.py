@@ -5,6 +5,6 @@ __all__ = [
     "Serializer",
 ]
 
-__version__ = "1.2.2"
+__version__ = "1.3.0"
 
 from xlsx_serializer.core import Deserializer, Serializer
