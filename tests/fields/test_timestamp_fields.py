@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import datetime
+import datetime as dt
 from typing import TYPE_CHECKING
 
 import openpyxl
@@ -37,7 +37,7 @@ def test_date_field_is_deserialized(fixture_path: Path) -> None:
     obj = DateFieldModel._default_manager.get(pk=1)
 
     # Assert.
-    assert obj.date_field == datetime.date(2024, 4, 2)
+    assert obj.date_field == dt.date(2024, 4, 2)
 
 
 @pytest.mark.django_db
@@ -45,7 +45,7 @@ def test_date_field_is_serialized() -> None:
     # Arrange.
     obj = DateFieldModel._default_manager.create(
         pk=1,
-        date_field=datetime.date(2024, 4, 2),
+        date_field=dt.date(2024, 4, 2),
     )
 
     # Act.
@@ -74,7 +74,7 @@ def test_time_field_is_deserialized(fixture_path: Path) -> None:
     obj = TimeFieldModel._default_manager.get(pk=1)
 
     # Assert.
-    assert obj.time_field == datetime.time(22, 44, 42)
+    assert obj.time_field == dt.time(22, 44, 42)
 
 
 @pytest.mark.django_db
@@ -82,7 +82,7 @@ def test_time_field_is_serialized() -> None:
     # Arrange.
     obj = TimeFieldModel._default_manager.create(
         pk=1,
-        time_field=datetime.time(22, 44, 42),
+        time_field=dt.time(22, 44, 42),
     )
 
     # Act.
@@ -114,7 +114,7 @@ def test_datetime_field_is_deserialized_with_tz_disabled(fixture_path: Path) -> 
     obj = DateTimeFieldModel._default_manager.get(pk=1)
 
     # Assert.
-    assert obj.datetime_field == datetime.datetime(2024, 4, 2, 22, 44, 42)  # noqa: DTZ001
+    assert obj.datetime_field == dt.datetime(2024, 4, 2, 22, 44, 42)  # noqa: DTZ001
 
 
 @override_settings(
@@ -136,9 +136,9 @@ def test_datetime_field_is_deserialized_with_tz_enabled(fixture_path: Path) -> N
     obj = DateTimeFieldModel._default_manager.get(pk=1)
 
     # Assert.
-    assert obj.datetime_field == datetime.datetime(
+    assert obj.datetime_field == dt.datetime(
         *(2024, 4, 2, 22, 44, 42),
-        tzinfo=datetime.timezone(datetime.timedelta(hours=2)),
+        tzinfo=dt.timezone(dt.timedelta(hours=2)),
     )
 
 
@@ -150,7 +150,7 @@ def test_datetime_field_is_serialized_with_tz_disabled() -> None:
     # Arrange.
     obj = DateTimeFieldModel._default_manager.create(
         pk=1,
-        datetime_field=datetime.datetime(2024, 4, 2, 22, 44, 42),  # noqa: DTZ001
+        datetime_field=dt.datetime(2024, 4, 2, 22, 44, 42),  # noqa: DTZ001
     )
 
     # Act.
@@ -171,9 +171,9 @@ def test_datetime_field_is_serialized_with_tz_enabled() -> None:
     # Arrange.
     obj = DateTimeFieldModel._default_manager.create(
         pk=1,
-        datetime_field=datetime.datetime(
+        datetime_field=dt.datetime(
             *(2024, 4, 2, 22, 44, 42),
-            tzinfo=datetime.timezone(datetime.timedelta(hours=2)),
+            tzinfo=dt.timezone(dt.timedelta(hours=2)),
         ),
     )
 
@@ -203,7 +203,7 @@ def test_duration_field_is_deserialized(fixture_path: Path) -> None:
     obj = DurationFieldModel._default_manager.get(pk=1)
 
     # Assert.
-    assert obj.duration_field == datetime.timedelta(hours=4, minutes=2, seconds=42)
+    assert obj.duration_field == dt.timedelta(hours=4, minutes=2, seconds=42)
 
 
 @pytest.mark.django_db
@@ -211,7 +211,7 @@ def test_duration_field_is_serialized() -> None:
     # Arrange.
     obj = DurationFieldModel._default_manager.create(
         pk=1,
-        duration_field=datetime.timedelta(hours=4, minutes=2, seconds=42),
+        duration_field=dt.timedelta(hours=4, minutes=2, seconds=42),
     )
 
     # Act.
